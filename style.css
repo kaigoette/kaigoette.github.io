@@ -33,7 +33,9 @@ p {
     font-size: 18px;
 }
 
-
+a{
+    text-decoration: none;
+}
 
 .buttons {
     min-width: 130px;
