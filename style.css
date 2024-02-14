@@ -26,3 +26,20 @@ p {
     font-family: Arial, sans-serif;
     font-size: 18px;
 }
+
+button {
+    margin: 5px;
+    background-color: white;
+    color: rgb(23,23,23);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+#buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
