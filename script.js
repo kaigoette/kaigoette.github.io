@@ -36,7 +36,7 @@ function finishGettingData(repos){
         // Erstelle einen Button
         const button = document.createElement("button");
         button.innerHTML = repoName; // Setze das Label des Buttons auf den Namen
-
+        button.classList.add("buttons");
         // Setze den Link des Buttons
         button.addEventListener("click", function() {
             window.location.href = "https://kaigoe.github.io/" + repoName;
@@ -54,7 +54,7 @@ function finishGettingData(repos){
         // Erstelle einen Button
         const button = document.createElement("button");
         button.innerHTML = repoName; // Setze das Label des Buttons auf den Namen
-
+        button.classList.add("buttons");
         // Setze den Link des Buttons
         button.addEventListener("click", function() {
             window.location.href = "https://github.com/kaigoe/" + repoName;
