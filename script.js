@@ -21,12 +21,10 @@ function finishGettingData(repos){
 
     for (i = 0; i < repos.length; i++) {
         if (typeof repos[i].has_pages === "boolean" && repos[i].has_pages === true) {
-            if(repos[i].name === "kaigoe.github.io") console.log("LOL")
+            if(repos[i].name === "kaigoe.github.io") null;
             else reposWithPages.push(repos[i].name);
         }
     }
-    console.log("ReposWithPages:")
-    console.log(reposWithPages);
 
     var buttonsPages = document.getElementById("buttonsPages");
 
