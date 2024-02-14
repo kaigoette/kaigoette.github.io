@@ -5,12 +5,12 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.box {
+.content {
     border: 2px solid white;
     padding: 10px;
     margin: 10px;
@@ -22,12 +22,20 @@ h1 {
     color: limegreen;
 }
 
+h2{
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+
+}
+
 p {
     font-family: Arial, sans-serif;
     font-size: 18px;
 }
 
 .buttons {
+    min-width: 130px;
+    align-items: center;
     margin: 5px;
     background-color: white;
     color: rgb(23,23,23);
@@ -35,11 +43,47 @@ p {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 20px;
+    font-size: 13px;
 }
 
 #buttons{
-    display: flex;
-    justify-content: space-around;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.cathegoryBox {
+    display: grid;
+    align-items: center;
+    min-width: 180px;
+    min-height: 50px;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid gray;
+}
+
+.buttonsBox{
+    margin: 20px;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.orgIcon{
+    height: 35px;
+    width: 35px;
+    margin-right: 5px;
+    border-radius: 15px;
+}
+
+#buttonsOrgas{
+    display: grid;
+    justify-content: start;
+}
+
+.orgaBox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }

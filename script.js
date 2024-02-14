@@ -1,11 +1,11 @@
-//Get Repos with Pages
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://api.github.com/users/kaigoe/repos");
-xhr.onload = function() {
-    if (xhr.status === 200) {
-        var data = JSON.parse(xhr.responseText);
+//Request Repos with Pages
+var personalRepoRequest = new XMLHttpRequest();
+personalRepoRequest.open("GET", "https://api.github.com/users/kaigoe/repos");
+personalRepoRequest.onload = function() {
+    if (personalRepoRequest.status === 200) {
+        var data = JSON.parse(personalRepoRequest.responseText);
         if (Array.isArray(data)) {
-            finishGettingData(data);
+            processingRepoData(data);
         } else {
             console.error("The JSON is no Array!");
         }
@@ -14,11 +14,34 @@ xhr.onload = function() {
     }
 };
 
-function finishGettingData(repos){
+//Request Organisations
+var organisationRequest = new XMLHttpRequest();
+organisationRequest.open("GET", "https://api.github.com/users/kaigoe/orgs");
+organisationRequest.onload = function() {
+    if (organisationRequest.status === 200) {
+        var data = JSON.parse(organisationRequest.responseText);
+        if (Array.isArray(data)) {
+            processingOrganisationData(data);
+        } else {
+            console.error("The JSON is no Array!");
+        }
+    } else {
+        console.error("The Request failed");
+    }
+};
+
+//Send Requests
+personalRepoRequest.send();
+organisationRequest.send();
+
+function processingRepoData(repos){
     let i;
 
+    const buttonsPages = document.getElementById("buttonsPages");
+    const buttonsRepos = document.getElementById("buttonsRepos");
     var reposWithPages = [];
 
+    //fill reposWithPages with the names of the repos with pages
     for (i = 0; i < repos.length; i++) {
         if (typeof repos[i].has_pages === "boolean" && repos[i].has_pages === true) {
             if(repos[i].name === "kaigoe.github.io") null;
@@ -26,8 +49,7 @@ function finishGettingData(repos){
         }
     }
 
-    var buttonsPages = document.getElementById("buttonsPages");
-
+    //display a button for all reposWithPages which links to its page
     for (i = 0; i < reposWithPages.length; i++) {
         const repoName = reposWithPages[i];
 
@@ -44,7 +66,6 @@ function finishGettingData(repos){
         buttonsPages.appendChild(button);
     }
 
-    var buttonsRepos = document.getElementById("buttonsRepos");
 
     for (i = 0; i < repos.length; i++) {
         const repoName = repos[i].name;
@@ -64,5 +85,32 @@ function finishGettingData(repos){
 
 }
 
+function processingOrganisationData(orgas){
+    const buttonsOrgas = document.getElementById("buttonsOrgas");
 
-xhr.send();
+    for (let i = 0; i < orgas.length; i++) {
+        const orgaName = orgas[i].login;
+        const iconUrl = orgas[i].avatar_url;
+
+        // Erstelle einen Button
+        const orgaBox = document.createElement("div");
+        const button = document.createElement("button");
+        const icon = document.createElement("img");
+        orgaBox.classList.add("orgaBox");
+        icon.src = iconUrl;
+        icon.classList.add("orgIcon")
+        button.innerHTML = orgaName; // Setze das Label des Buttons auf den Namen
+        button.classList.add("buttons");
+        // Setze den Link des Buttons
+        button.addEventListener("click", function() {
+            window.location.href = "https://github.com/kaigoe/" + repoName;
+        });
+
+        orgaBox.appendChild(icon);
+        orgaBox.appendChild(button);
+
+        // Füge den Button dem Container hinzu
+        buttonsOrgas.appendChild(orgaBox);
+    }
+
+}
