@@ -93,18 +93,15 @@ function processingOrganisationData(orgas){
         const iconUrl = orgas[i].avatar_url;
 
         // Erstelle einen Button
-        const orgaBox = document.createElement("div");
+        const orgaBox = document.createElement("a");
         const button = document.createElement("button");
         const icon = document.createElement("img");
         orgaBox.classList.add("orgaBox");
+        orgaBox.href = "https://github.com/" + orgaName;
         icon.src = iconUrl;
         icon.classList.add("orgIcon")
         button.innerHTML = orgaName; // Setze das Label des Buttons auf den Namen
         button.classList.add("buttons");
-        // Setze den Link des Buttons
-        button.addEventListener("click", function() {
-            window.location.href = "https://github.com/kaigoe/" + repoName;
-        });
 
         orgaBox.appendChild(icon);
         orgaBox.appendChild(button);
