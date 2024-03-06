@@ -1,6 +1,6 @@
 //Request Repos with Pages
 var personalRepoRequest = new XMLHttpRequest();
-personalRepoRequest.open("GET", "https://api.github.com/users/kaigoe/repos");
+personalRepoRequest.open("GET", "https://api.github.com/users/kaigoette/repos");
 personalRepoRequest.onload = function() {
     if (personalRepoRequest.status === 200) {
         var data = JSON.parse(personalRepoRequest.responseText);
@@ -16,7 +16,7 @@ personalRepoRequest.onload = function() {
 
 //Request Organisations
 var organisationRequest = new XMLHttpRequest();
-organisationRequest.open("GET", "https://api.github.com/users/kaigoe/orgs");
+organisationRequest.open("GET", "https://api.github.com/users/kaigoette/orgs");
 organisationRequest.onload = function() {
     if (organisationRequest.status === 200) {
         var data = JSON.parse(organisationRequest.responseText);
@@ -44,7 +44,7 @@ function processingRepoData(repos){
     //fill reposWithPages with the names of the repos with pages
     for (i = 0; i < repos.length; i++) {
         if (typeof repos[i].has_pages === "boolean" && repos[i].has_pages === true) {
-            if(repos[i].name === "kaigoe.github.io") null;
+            if(repos[i].name === "kaigoette.github.io") null;
             else reposWithPages.push(repos[i].name);
         }
     }
@@ -59,7 +59,7 @@ function processingRepoData(repos){
         button.classList.add("buttons");
         // Setze den Link des Buttons
         button.addEventListener("click", function() {
-            window.location.href = "https://kaigoe.github.io/" + repoName;
+            window.location.href = "https://kaigoette.github.io/" + repoName;
         });
 
         // Füge den Button dem Container hinzu
@@ -76,7 +76,7 @@ function processingRepoData(repos){
         button.classList.add("buttons");
         // Setze den Link des Buttons
         button.addEventListener("click", function() {
-            window.location.href = "https://github.com/kaigoe/" + repoName;
+            window.location.href = "https://github.com/kaigoette/" + repoName;
         });
 
         // Füge den Button dem Container hinzu
